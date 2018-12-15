@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript Clock</title>
+<style type="text/css">
+	.clock{
+		width: 40%;
+		/*height: 100px;*/
+		margin: auto;
+		font-family: courier, monospace;
+		text-align: center;
+		color: white;
+		font-size: 60px;
+		padding: 70px;
+	}
+	p{
+		margin: 0px;
+	}
+
+	.dc{
+		background-color : #5fd6ee;
+	}
+	.london{
+		background-color : pink;
+	}
+	.tokyo{
+		background-color: orange;
+	}
+	.sydney{
+		background-color: grey;
+	}
+    h1{
+    	text-align: center;
+    }
+	
+</style>
+</head>
+<body onload="UpdateClock(); setInterval('UpdateClock()' , 1000)">
+	<h1>The Javascript Clock</h1>
+	<div class="clock dc">
+		<p>Washington:</p>
+		<div id="clock">
+		</div>
+	</div>
+	<div class="clock london">
+		<p>London:</p>
+		<div id="clockLondon">
+		</div>
+	</div>
+	<div class="clock tokyo">
+		<p>Tokyo:</p>
+		<div id="clockTokyo">
+		</div>
+	</div>
+	<div class="clock sydney">
+		<p>Sydney:</p>
+		<div id="clockSydney">
+		</div>
+	</div>
+
+	<script type="text/javascript">
+			function DC(){
+			    var currentTime = new Date();
+				//Get hours, minutes and seconds from the Date object
+				var currentHours = currentTime.getHours();
+				var currentMinutes = currentTime.getMinutes();
+				var currentSeconds = currentTime.getSeconds();
+				// Adding leading zeros to minutes and seconds if needed:
+				currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+				currentSeconds = (currentSeconds < 10 ? "0" : "") + currentSeconds;
+				// seeting AM and PM 
+				var TimeOfDay = (currentHours < 12 ? "AM" : "PM");
+				currentHours = (currentHours > 12 ) ? currentHours - 12 : currentHours;
+				currentHours = (currentHours == 0) ? 12 : currentHours;
+
+				// Putting it all together
+				var currentTimeDC = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + TimeOfDay; 
+				document.getElementById("clock").innerText = currentTimeDC;	
+			}
+			function london(){
+				var currentTime = new Date();
+				//Get hours, minutes and seconds from the Date object
+				var currentHours = currentTime.getHours();
+				var currentMinutes = currentTime.getMinutes();
+				var currentSeconds = currentTime.getSeconds();
+				// Adding leading zeros to minutes and seconds if needed:
+				currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+				currentSeconds = (currentSeconds < 10 ? "0" : "") + currentSeconds;
+				currentHours = currentHours +5;
+				currentHours = (currentHours > 24 ? currentHours-24 : currentHours);
+				// seeting AM and PM 
+				var TimeOfDay = (currentHours < 12 ? "AM" : "PM");
+
+				currentHours = (currentHours > 12 ) ? currentHours - 12 : currentHours;
+				currentHours = (currentHours == 0) ? 12 : currentHours;
+				// currentHours = currentHours - 12;
+				// Putting it all together
+				var currentTimeLondon = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + TimeOfDay; 
+				document.getElementById("clockLondon").innerText = currentTimeLondon;	
+
+			}
+			
+			function tokyo(){
+				var currentTime = new Date();
+				//Get hours, minutes and seconds from the Date object
+				var currentHours = currentTime.getHours();
+				// currentHours = 24;
+				var currentMinutes = currentTime.getMinutes();
+				var currentSeconds = currentTime.getSeconds();
+				// Adding leading zeros to minutes and seconds if needed:
+				currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+				currentSeconds = (currentSeconds < 10 ? "0" : "") + currentSeconds;
+				currentHours = currentHours - 10;
+				currentHours = (currentHours > 24 ? currentHours-24 : currentHours);
+				// seeting AM and PM 
+				var TimeOfDay = (currentHours < 12 ? "AM" : "PM");
+
+				currentHours = (currentHours > 12 ) ? currentHours - 12 : currentHours;
+				currentHours = (currentHours == 0) ? 12 : currentHours;
+				// currentHours = currentHours - 12;
+				// Putting it all together
+				var currentTimeTokyo = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + TimeOfDay; 
+				document.getElementById("clockTokyo").innerText=  currentTimeTokyo;	
+
+			}			
+
+			function sydney(){
+				var currentTime = new Date();
+				//Get hours, minutes and seconds from the Date object
+				var currentHours = currentTime.getHours();
+				// currentHours = 8;
+				var currentMinutes = currentTime.getMinutes();
+				var currentSeconds = currentTime.getSeconds();
+				// Adding leading zeros to minutes and seconds if needed:
+				currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+				currentSeconds = (currentSeconds < 10 ? "0" : "") + currentSeconds;
+				currentHours = currentHours - 8;
+				currentHours = (currentHours > 24 ? currentHours-24 : currentHours);
+				// seeting AM and PM 
+				var TimeOfDay = (currentHours < 12 ? "AM" : "PM");
+
+				currentHours = (currentHours > 12 ) ? currentHours - 12 : currentHours;
+				currentHours = (currentHours == 0) ? 12 : currentHours;
+				// currentHours = currentHours - 12;
+				// Putting it all together
+				var currentTimeSydney = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + TimeOfDay; 
+				document.getElementById("clockSydney").innerText=  currentTimeSydney;	
+
+			}		
+
+			function UpdateClock(){
+				DC();
+				london();
+				tokyo();
+				sydney();
+			}
+ 		
+               
+
+		
+
+
+	</script>
+
+</body>
+</html>
